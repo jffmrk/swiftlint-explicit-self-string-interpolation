@@ -1,0 +1,5 @@
+analyzer_rules:
+  - explicit_self
+
+explicit_self:
+  severity: error
