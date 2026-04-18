@@ -1,12 +1,28 @@
 #!/usr/bin/env bash
 set -uo pipefail
 
+USAGE="Usage: $0 [swiftlint_binary]"
+
 cd "$(dirname "$0")"
 
 SCHEME="${SCHEME:-ExplicitSelfStringInterpolationBug}"
 DESTINATION="${DESTINATION:-platform=macOS}"
 CONFIGURATION="${CONFIGURATION:-Debug}"
 LOG_FILE="${LOG_FILE:-xcodebuild.log}"
+SWIFTLINT_BINARY="${1:-swiftlint}"
+
+echo ""
+echo "Testing..."
+echo ""
+swift test
+swift_test_status=$?
+
+if [ "$swift_test_status" -ne 0 ]; then
+  echo ""
+  echo "🔴 swift test failed"
+  echo ""
+  exit "$swift_test_status"
+fi
 
 echo ""
 echo "Building..."
@@ -22,7 +38,9 @@ xcodebuild \
 xcode_status=$?
 
 if [ "$xcode_status" -ne 0 ]; then
-  echo "xcodebuild failed (exit $xcode_status)"
+  echo ""
+  echo "🔴 xcodebuild failed (exit $xcode_status)"
+  echo ""
   exit "$xcode_status"
 fi
 
@@ -30,7 +48,7 @@ echo "=="
 echo "== swiftlint analyze"
 echo "=="
 
-swiftlint analyze \
+"$SWIFTLINT_BINARY" analyze \
   --compiler-log-path "$LOG_FILE" \
   --config "${SWIFTLINT_CONFIG:-.swiftlint.yml}"
 swiftlint_status=$?

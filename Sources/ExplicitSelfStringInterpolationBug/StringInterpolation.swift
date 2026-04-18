@@ -4,4 +4,8 @@ class StringInterpolation {
     var description: String {
         return "StringInterpolation{foo: \(self.foo)}"
     }
+
+    var rawStringLiteral: String {
+        return #"StringInterpolation{foo: \#(self.foo)} using "raw" string literals."#
+    }
 }
