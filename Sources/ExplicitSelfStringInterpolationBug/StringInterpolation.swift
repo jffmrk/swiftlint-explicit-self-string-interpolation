@@ -1,7 +1,6 @@
 class StringInterpolation {
     let foo = "foo"
     let bar = "bar"
-    var combo: String
 
     var description: String {
         return "StringInterpolation{foo: \(self.foo)}"
@@ -11,9 +10,9 @@ class StringInterpolation {
         return #"StringInterpolation{foo: \#(self.foo)} using "raw" string literals."#
     }
 
-    init() {
+    func localVariableInterpolation() -> String {
         let a = "a"
         let b = "b"
-        self.combo = "\(a)\(b)"
+        return "\(a)\(b)"
     }
 }
