@@ -1,9 +1,9 @@
 class LocalStringInterpolation {
-    let foo = "foo"
+    var bar: String
 
-    var description: String {
+    init() {
         let a = "a"
         let b = "b"
-        return "\(a)\(b)\(self.foo)"
+        self.bar = "\(a)\(b)".uppercased()
     }
 }

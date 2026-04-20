@@ -5,6 +5,6 @@ import XCTest
 final class LocalStringInterpolationTests: XCTestCase {
     func testDescription() {
         let subject = LocalStringInterpolation()
-        XCTAssertEqual(subject.description, "abfoo")
+        XCTAssertEqual(subject.bar, "AB")
     }
 }
