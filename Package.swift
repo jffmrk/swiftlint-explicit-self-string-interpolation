@@ -9,7 +9,7 @@ let package = Package(
     targets: [
         .target(name: "ExplicitSelfStringInterpolationBug"),
         .testTarget(
-            name: "StringInterpolationTests",
+            name: "ExplicitSelfStringInterpolationBugTests",
             dependencies: ["ExplicitSelfStringInterpolationBug"]
         ),
     ]
