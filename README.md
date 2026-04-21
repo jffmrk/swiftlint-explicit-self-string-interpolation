@@ -2,6 +2,8 @@
 
 Minimal repro for the SwiftLint [**`explicit_self`**](https://realm.github.io/SwiftLint/explicit_self.html) analyzer rule reporting a violation even when the instance member is **already** accessed with `self.` inside string interpolation.
 
+SwiftLint [issue #6611](https://github.com/realm/SwiftLint/issues/6611)
+
 ## What goes wrong
 
 In `Sources/ExplicitSelfStringInterpolationBug/StringInterpolation.swift`, `description` returns a string that interpolates `self.foo`:
